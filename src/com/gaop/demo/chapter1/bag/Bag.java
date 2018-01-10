@@ -2,14 +2,14 @@ package com.gaop.demo.chapter1.bag;
 
 /**
  * @description 	
- * 	ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½,Êµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ±ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ·ï¿½ï¿½ï¿½,ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ôªï¿½ØµÄ²ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Êµï¿½ï¿½<b>ï¿½ï¿½ï¿½ï¿½</b>
+ * 	±³°üÊÇÒ»ÖÖ²»Ö§³Ö´ÓÖÐÉ¾³ýÔªËØµÄ¼¯ºÏÊý¾ÝÀàÐÍ--ËüµÄÄ¿µÄÊÇ°ïÖúÓÃÀýÊÕ¼¯ÔªËØ²¢µü´ú±éÀúËùÓÐÊÕ¼¯µ½µÄÔªËØ,µü´úµÄË³Ðò²»È·¶¨ÇÒÓëÓÃÀýÎÞ¹Ø
  * @author gaop
- * @date 2017ï¿½ï¿½7ï¿½ï¿½29ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½11:49:20
+ * @date 2017Äê7ÔÂ29ÈÕ ÏÂÎç11:49:20
  */
 public interface Bag<T> extends Iterable<T>{
 
 	/**
-	 * ï¿½ò±³°ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
+	 * Ïò±³°ü¼ÓÈëÒ»¸öÔªËØ
 	 */
 	void add(T item);
 	

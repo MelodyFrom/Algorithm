@@ -49,7 +49,7 @@ public class ExtendibleStack<T> {
 	 */
 	public T pop() {
 		if(data.length > 0 && (data.length / capacity) >= 4) {
-			this.resize(data.length / 2);
+			this.resize(data.length >> 1);
 		}
 		T element = data[--capacity];
 		//方便GC回收已经无法再被访问的对象

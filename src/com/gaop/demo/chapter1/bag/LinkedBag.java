@@ -6,7 +6,7 @@ import com.gaop.demo.chapter1.linked.Node;
 
 /**
  * @description 	
- * 	链式背包
+ * 	链式背包(头插法)
  * @author gaop
  * @date 2017年7月29日 下午11:47:43
  */
@@ -27,8 +27,8 @@ public class LinkedBag<T> implements Bag<T>{
 	
 	@Override
 	public boolean isEmpty() {
-		return N == 0;
 		// or return element == null;
+		return N == 0;
 	}
 
 	@Override
@@ -45,8 +45,9 @@ public class LinkedBag<T> implements Bag<T>{
 
 		private Node<T> current = element;
 		
-		//这里判断链式背包是否为空的条件是私有内部类成员current是否为空,而不是外部背包类成员element.因为一旦向这个背包加入了元素,这个元素就不再可能是空的了.
-		//而内部类成员current在每一次迭代操作中都会被重新赋值,从而使得hasNext方法的检查有效
+		/*这里判断链式背包是否为空的条件是私有内部类成员current是否为空,而不是外部背包类成员element.
+		 * 因为一旦向这个背包加入了元素,这个元素就不再可能是空的了.而内部类成员current在每一次迭代操作
+		 * 中都会被重新赋值,从而使得hasNext方法的检查有效**/
 		@Override
 		public boolean hasNext() {
 			return null != current;
