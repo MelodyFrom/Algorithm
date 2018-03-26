@@ -48,6 +48,7 @@ public class Merge2nd<T> extends BaseModel<T>{
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void merge(Comparable[] a, int lo, int mid, int hi)
 	{
+		System.out.println("归并数组下标:lo=>{" + lo + "},mid=>{" + mid + "},hi=>{" + hi + "}");
 		//归并a[lo...mid]与a[mid+1...hi]
 		int i = lo,  j = mid + 1;
 		//复制数组
@@ -63,23 +64,29 @@ public class Merge2nd<T> extends BaseModel<T>{
 			if(i > mid)
 			{
 				a[k] = copy[j++];
+				System.out.println("左边数组全部归并完但是右边还有");
 			}
 			//右边数组全部归并完但是左边还有
 			else if(j > hi)
 			{
 				a[k] = copy[i++];
+				System.out.println("右边数组全部归并完但是左边还有");
 			}
 			//左边大于等于右边
 			else if(super.less(copy[j], copy[i]))
 			{
 				a[k] = copy[j++];
+				System.out.println("左边大于等于右边");
 			}
 			//左边小于右边
 			else
 			{
 				a[k] = copy[i++];
+				System.out.println("左边小于右边");
 			}
 		}
+		System.out.print("本趟归并结束: ");
+		show(a);
 	}
 
 	public static void main(String[] args) {
