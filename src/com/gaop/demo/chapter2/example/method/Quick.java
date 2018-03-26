@@ -26,16 +26,17 @@ public class Quick<T> extends BaseModel<T>{
 	}
 	
 	private int partition(Comparable[] a, int lo, int hi) {
-		int i = lo, j = hi + 1;
-		Comparable v = a[lo];
+		int i = lo, j = hi + 1; //左右的扫描指针
+		Comparable v = a[lo]; //切分元素
 		while(true)
 		{
+			// 切分元素，检查扫描是否结束并交换元素
 			while(super.less(a[++i], v)) if(i == hi) break;
 			while(super.less(v, a[--j])) if(j == lo) break;
 			if(i >= j) break;
 			super.exch(a, i, j);
 		}
-		super.exch(a, lo, j);
+		super.exch(a, lo, j); // 将v = a[j] 放入正确的位置
 		return j;
 	}
 	
