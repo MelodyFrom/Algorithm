@@ -30,7 +30,7 @@ public class Quick<T> extends BaseModel<T>{
 		Comparable v = a[lo]; //切分元素
 		while(true)
 		{
-			// 切分元素，检查扫描是否结束并交换元素
+			// 扫描元素，检查扫描是否结束并交换元素
 			while(super.less(a[++i], v)) if(i == hi) break;
 			while(super.less(v, a[--j])) if(j == lo) break;
 			if(i >= j) break;
