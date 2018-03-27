@@ -8,14 +8,7 @@ package com.gaop.demo.leetcode;
  * @author gao
  *
  */
-public class RemoveDuplicateEleFromArray {
-	
-	public static void show(int[] arg) {
-		for(int i : arg) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
-	}
+public class RemoveDuplicateEleFromArray extends Base{
     
     public static int removeDuplicates(int[] nums) {
     	if(nums.length == 0)
