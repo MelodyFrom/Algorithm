@@ -16,7 +16,7 @@ public class Bubble extends BaseModel<Integer>{
 	public void sort(Comparable<Integer>[] arg) {
 		int length = arg.length;
 		for(int i = 0; i < length - 1; i++) {
-			for(int j = i; j < length - 1 - i; j++) {
+			for(int j = 0; j < length - 1 - i; j++) {
 				if(super.less(arg[j], arg[j+1])) {
 					super.exch(arg, j, j+1);
 				}

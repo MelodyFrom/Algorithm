@@ -24,28 +24,47 @@ public class FindUnrepeatableString {
 		System.out.println(firstUniqChar(s5));
 	}
 
+//    public static int firstUniqChar(String s) {
+//    	boolean repeatFlag = false;
+//    	char[] origin = s.toCharArray();
+//    	if(origin.length == 1)
+//    		return 0;
+//    	Set<Integer> indexPool = new HashSet<>();
+//    	for (int i = 0; i < origin.length - 1; i++) {
+//    		if (indexPool.size() == origin.length)
+//				return -1;
+//			for (int j = i + 1; j <= origin.length - 1; j++) {
+//				if (origin[i] == origin[j]) {
+//					repeatFlag = true;
+//					System.out.println("下标" + i + " 与下标 " + j + " 重复");
+//					indexPool.add(i);
+//					indexPool.add(j);
+//					break;
+//				}
+//			}
+//			if (!repeatFlag) {
+//				return i;
+//			}
+//			repeatFlag = false;
+//		}
+//    	return -1;
+//    }
+	
     public static int firstUniqChar(String s) {
-    	boolean repeatFlag = false;
-    	char[] origin = s.toCharArray();
-    	if(origin.length == 1)
-    		return 0;
-    	Set<Integer> indexPool = new HashSet<>();
-    	for (int i = 0; i < origin.length - 1; i++) {
-    		if (indexPool.size() == origin.length)
-				return -1;
-			for (int j = i + 1; j <= origin.length - 1; j++) {
-				if (origin[i] == origin[j]) {
-					repeatFlag = true;
-					System.out.println("下标" + i + " 与下标 " + j + " 重复");
-					indexPool.add(i);
-					indexPool.add(j);
+    	char[] strArg = s.toCharArray();
+    	boolean flag = false;
+    	for (int i = 0; i < strArg.length; i++) {
+			Character content = strArg[i];
+			for (int j = i + 1; j < strArg.length; j++) {
+				if (content.equals(strArg[j])) {
+					flag = true;
 					break;
 				}
 			}
-			if (!repeatFlag) {
+			if (!flag) {
+				// 循环下来没有发现重复的字符
 				return i;
 			}
-			repeatFlag = false;
 		}
     	return -1;
     }

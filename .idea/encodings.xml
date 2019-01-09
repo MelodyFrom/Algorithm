@@ -4,6 +4,19 @@
     <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter1/bag/Bag.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter1/bag/LinkedBag.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter1/stack/ExtendibleStack.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter2/example/BaseModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter2/example/method/Bubble.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter2/example/method/Insertion.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter2/example/method/Merge.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter2/example/method/Quick.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter2/example/method/Quick1.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/chapter2/example/method/Selection.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/leetcode/Backpack.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/leetcode/ContainsDuplicate.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/leetcode/IntersectionOfTwoArray.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/leetcode/RemoveDuplicateEleFromArray.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/leetcode/RotateArray.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/leetcode/StockTrade.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/gaop/demo/leetcode/string/FindUnrepeatableString.java" charset="GBK" />
   </component>
 </project>
