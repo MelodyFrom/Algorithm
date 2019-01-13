@@ -1,4 +1,4 @@
-package com.gaop.demo.chapter3;
+package com.gaop.demo.chapter3.core;
 
 import java.util.Iterator;
 

@@ -1,4 +1,4 @@
-package com.gaop.demo.chapter3;
+package com.gaop.demo.chapter3.core;
 
 /**
  *  标准符号表接口定义 <br/>
