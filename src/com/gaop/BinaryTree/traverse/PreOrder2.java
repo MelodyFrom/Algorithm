@@ -15,6 +15,7 @@ import java.util.Stack;
  *           22 3
  *             /
  *            21
+ * 2 4 8 9 5 10 11 22 3 21
  * @author gaopeng@doctorwork.com
  * @date 2019-01-17 21:55
  **/
