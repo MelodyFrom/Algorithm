@@ -30,6 +30,10 @@ public class BNode<T> {
         this.rchild = rchild;
     }
 
+    public BNode(T data) {
+        this.data = data;
+    }
+
     public T getData() {
         return data;
     }
