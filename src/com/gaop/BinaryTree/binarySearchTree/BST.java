@@ -3,6 +3,9 @@ package com.gaop.BinaryTree.binarySearchTree;
 import com.gaop.BinaryTree.BNode;
 import com.gaop.BinaryTree.traverse.InOrder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 二叉查找树 Binary Search Tree--基于二叉树的一种数据结构，以每个节点为根，其左子树的 data 域均小于根节点值；而其右子树的 data 域均大于根节点值。
  * @author carpeng.gao@qunar.com
@@ -45,6 +48,8 @@ public class BST {
                 } else {
                     temp = temp.getLchild();
                 }
+            } else if (temp.getData().equals(bNode.getData())){// 插入节点在现有的二叉树中已经存在了
+                return;
             }
         }
     }
@@ -84,23 +89,24 @@ public class BST {
         if (null == param)
             return true;
         BNode<Integer> pre = null;
-        int rl = 1;
+        int rl = 0;
+        BNode<Integer> temp = root;
         while (true) {
-            BNode<Integer> temp = root;
-            pre = temp;//保存前一个节点--即保存一个父节点
-            if (root.getData() > param) {
+            if (temp.getData() > param) {
+                pre = temp;//保存前一个节点--即保存一个父节点
                 temp = temp.getLchild();
                 rl = 1;//表示走到了左子树
-            } else if (root.getData() < param) {
-                temp.getRchild();
-                rl = 0;//表示走到了右子树
+            } else if (temp.getData() < param) {
+                pre = temp;
+                temp = temp.getRchild();
+                rl = 2;//表示走到了右子树
             } else {
                 //找到了要删除的节点
                 if (temp.getRchild() == null && temp.getLchild() == null) {
                     // 目标节点没有任何子节点
                     if (rl == 1)
                         pre.setLchild(null);
-                    else if (rl == 0)
+                    else if (rl == 2)
                         pre.setRchild(null);
                     return true;
                 }
@@ -108,24 +114,54 @@ public class BST {
                     //目标节点有右子节点而没有左子节点
                     if (rl == 1)
                         pre.setRchild(temp.getRchild());
-                    else if (rl == 0)
+                    else if (rl == 2)
                         pre.setRchild(temp.getLchild());
                     return true;
-                }
-                if (temp.getRchild() == null && temp.getLchild() != null) {
+                } else if (temp.getRchild() == null && temp.getLchild() != null) {
                     //目标节点有左子节点而没有右子节点
                     if (rl == 1)
                         pre.setLchild(temp.getRchild());
-                    else if (rl == 0)
+                    else if (rl == 2)
                         pre.setLchild(temp.getLchild());
                     return true;
-                }
-                if (temp.getLchild() != null && temp.getRchild() != null) {
+                } else {
                     //目标节点的左右子节点均存在
-                    
+                    /**
+                     * 这里是二叉排序树中最麻烦的一个节点处理--即当前找到的待删除节点，既有右子树Pr，又有左子树Pl：有两种处理方案
+                     * 1. 直接令待删除节点的左子树Pl替代到当前待删除节点的位置，然后将右子树Pr放到Pl子树中序遍历的最后一个节点的右子树上。
+                     * 2. 第二种办法依赖于线索二叉树的前驱/后继节点的定位。暂时不表
+                     */
+                    if (rl == 1) {
+                        pre.setLchild(temp.getLchild());
+                    } else if (rl == 2) {
+                        pre.setRchild(temp.getLchild());
+                    }
+                    List<BNode<Integer>> list = getInOrderLastNode(temp.getLchild());
+                    list.get(list.size() -1).setRchild(temp.getRchild());
                 }
             }
         }
+    }
+
+    /**
+     * 返回一个二叉树中序遍历的节点列表
+     * @param bNode 目标节点
+     * @return list
+     */
+    private List<BNode<Integer>> getInOrderLastNode(BNode<Integer> bNode) {
+        List<BNode<Integer>> list = new ArrayList<>();
+        if (null == bNode)
+            return null;
+        List<BNode<Integer>> lNode = this.getInOrderLastNode(bNode.getLchild());
+        if (null != lNode && lNode.size() > 0) {
+            list.addAll(lNode);
+        }
+        list.add(bNode);
+        List<BNode<Integer>> rNode = this.getInOrderLastNode(bNode.getRchild());
+        if (null != lNode && lNode.size() > 0) {
+            list.addAll(this.getInOrderLastNode(bNode.getRchild()));
+        }
+        return list;
     }
 
     /**
@@ -174,5 +210,16 @@ public class BST {
         InOrder.inOrder(bst2.root);
         System.out.println("get 方法得到：" + bst2.get(1));
         System.out.println("getMax：" + bst2.getMax() + ", getMin:"+ bst2.getMin());
+
+        System.out.println("测试删除方法：");
+        //节点删除方法测试
+        bst.remove(1);
+        InOrder.inOrder(bst.root);
+        System.out.println("getMax：" + bst.getMax() + ", getMin:"+ bst.getMin());
+
+        bst2.remove(12);
+        InOrder.inOrder(bst2.root);
+        System.out.println("getMax：" + bst2.getMax() + ", getMin:"+ bst2.getMin());
+
     }
 }
