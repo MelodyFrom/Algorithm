@@ -136,8 +136,9 @@ public class BST {
                     } else if (rl == 2) {
                         pre.setRchild(temp.getLchild());
                     }
-                    List<BNode<Integer>> list = getInOrderLastNode(temp.getLchild());
-                    list.get(list.size() -1).setRchild(temp.getRchild());
+                    BNode<Integer> inOrderLastNode = getInOrderLastNode(temp.getLchild());
+                    inOrderLastNode.setRchild(temp.getRchild());
+                    return true;
                 }
             }
         }
@@ -148,20 +149,16 @@ public class BST {
      * @param bNode 目标节点
      * @return list
      */
-    private List<BNode<Integer>> getInOrderLastNode(BNode<Integer> bNode) {
-        List<BNode<Integer>> list = new ArrayList<>();
-        if (null == bNode)
+    private BNode<Integer> getInOrderLastNode(BNode<Integer> bNode) {
+        if (bNode == null)
             return null;
-        List<BNode<Integer>> lNode = this.getInOrderLastNode(bNode.getLchild());
-        if (null != lNode && lNode.size() > 0) {
-            list.addAll(lNode);
+        while (true) {
+            if (bNode.getRchild() == null)
+                return bNode;
+            else
+                bNode = bNode.getRchild();
         }
-        list.add(bNode);
-        List<BNode<Integer>> rNode = this.getInOrderLastNode(bNode.getRchild());
-        if (null != lNode && lNode.size() > 0) {
-            list.addAll(this.getInOrderLastNode(bNode.getRchild()));
-        }
-        return list;
+
     }
 
     /**
@@ -229,5 +226,15 @@ public class BST {
         System.out.println();
         bst3.remove(10);
         InOrder.inOrder(bst3.root);
+
+        System.out.println();
+        System.out.println("测试删除左右子节点均存在的节点：");
+        BST bst4 = new BST();
+        Integer[] array4 = new Integer[]{14, 10, 24, 20, 48};
+        bst4.insert(array4);
+        InOrder.inOrder(bst4.root);
+        bst4.remove(24);
+        System.out.println();
+        InOrder.inOrder(bst4.root);
     }
 }
