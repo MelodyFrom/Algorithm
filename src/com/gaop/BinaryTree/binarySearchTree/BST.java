@@ -113,16 +113,16 @@ public class BST {
                 if (temp.getRchild() != null && temp.getLchild() == null) {
                     //目标节点有右子节点而没有左子节点
                     if (rl == 1)
-                        pre.setRchild(temp.getRchild());
+                        pre.setLchild(temp.getRchild());
                     else if (rl == 2)
-                        pre.setRchild(temp.getLchild());
+                        pre.setRchild(temp.getRchild());
                     return true;
                 } else if (temp.getRchild() == null && temp.getLchild() != null) {
                     //目标节点有左子节点而没有右子节点
                     if (rl == 1)
-                        pre.setLchild(temp.getRchild());
-                    else if (rl == 2)
                         pre.setLchild(temp.getLchild());
+                    else if (rl == 2)
+                        pre.setRchild(temp.getLchild());
                     return true;
                 } else {
                     //目标节点的左右子节点均存在
@@ -217,9 +217,17 @@ public class BST {
         InOrder.inOrder(bst.root);
         System.out.println("getMax：" + bst.getMax() + ", getMin:"+ bst.getMin());
 
-        bst2.remove(12);
+        bst2.remove(1);
         InOrder.inOrder(bst2.root);
         System.out.println("getMax：" + bst2.getMax() + ", getMin:"+ bst2.getMin());
 
+        System.out.println("测试删除含有左子节点的节点：");
+        BST bst3 = new BST();
+        Integer[] array3 = new Integer[]{17, 10, 8, 20, 18 ,21};
+        bst3.insert(array3);
+        InOrder.inOrder(bst3.root);
+        System.out.println();
+        bst3.remove(10);
+        InOrder.inOrder(bst3.root);
     }
 }
