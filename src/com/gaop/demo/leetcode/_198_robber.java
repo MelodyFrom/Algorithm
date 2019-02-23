@@ -12,24 +12,21 @@ import java.util.List;
 public class _198_robber {
 
     public static int rob(int[] nums) {
+        int length = nums.length;
         if (nums.length == 0)
             return 0;
         if (nums.length == 1)
             return nums[0];
         if (nums.length == 2)
-            return nums[0] > nums[1] ? nums[0] : nums[1];
-        List<Integer> opts = new ArrayList<>(nums.length);
-        opts.add(nums[0]);
-        opts.add(nums[0] > nums[1] ? nums[0] : nums[1]);
+            return Math.max(nums[0], nums[1]);
+        int[] values = new int[nums.length];
+        values[0] = nums[0];
+        values[1] = Math.max(nums[0], nums[1]);
         // 确定 OPTi 的值，选 与 不选 的问题核心
-        int max = 0;
         for (int i = 2; i < nums.length; i++) {
-            int value = getValues(nums, opts, i);
-            int optVal = opts.get(i-1) > value ? opts.get(i-1) : value;
-            opts.add(optVal);
-            max = max > optVal ? max : optVal;
+            values[i] = Math.max(values[i-2] + nums[i], values[i-1]);
         }
-        return max;
+        return values[length-1];
     }
 
     private static int getValues(int[] nums, List<Integer> opts, int n) {
