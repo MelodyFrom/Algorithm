@@ -1,10 +1,9 @@
 package com.gaop.demo.leetcode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * NO.198 打家劫舍
+ * NO.198 动态规划-打家劫舍
  * @author gaopeng@doctorwork.com
  * @description
  * @date 2019-02-23 13:43
